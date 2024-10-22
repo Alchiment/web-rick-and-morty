@@ -1,0 +1,51 @@
+enum CharacterFilterSpecie {
+    human
+    alien
+    other
+}
+
+enum CharacterFilterStatus {
+    alive
+    dead
+    unknown
+}
+
+enum CharacterFilterGender {
+    female,
+    male,
+    genderless,
+    unknown
+}
+
+type Character {
+    id: ID!
+    name: String!
+    status: String!
+    species: String!
+    type: String!
+    gender: String!
+    origin: Location!
+    location: Location!
+    image: String!
+    episode: [Episode!]!
+}
+
+type Location {
+    name: String!
+}
+
+type Episode {
+    name: String!
+}
+
+type Query {
+    characters(page: Int, filter: CharacterFilter): [Character!]!
+}
+
+input CharacterFilter {
+    name: String
+    status: CharacterFilterStatus
+    species: CharacterFilterSpecie
+    type: String
+    gender: CharacterFilterGender
+}

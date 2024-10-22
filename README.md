@@ -1,1 +1,0 @@
-# web-rick-and-morty

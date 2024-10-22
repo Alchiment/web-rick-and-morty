@@ -1,0 +1,30 @@
+{
+  "name": "web-rick-and-morty",
+  "version": "0.0.1",
+  "description": " Project Laboratory Rick and Morty Web",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alchiment/web-rick-and-morty.git"
+  },
+  "author": "i.ricard26@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alchiment/web-rick-and-morty/issues"
+  },
+  "homepage": "https://github.com/Alchiment/web-rick-and-morty#readme",
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
