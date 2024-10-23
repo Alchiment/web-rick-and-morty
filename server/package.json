@@ -1,7 +1,7 @@
 {
-  "name": "web-rick-and-morty",
+  "name": "api-rick-and-morty",
   "version": "0.0.1",
-  "description": " Project Laboratory Rick and Morty Web",
+  "description": " Project Laboratory Rick and Morty Api",
   "main": "index.js",
   "type": "module",
   "scripts": {

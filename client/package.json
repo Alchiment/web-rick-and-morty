@@ -1,0 +1,40 @@
+{
+  "name": "client-rick-and-morty",
+  "description": "Project Laboratory Rick and Morty Client",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alchiment/web-rick-and-morty.git"
+  },
+  "author": "i.ricard26@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alchiment/web-rick-and-morty/issues"
+  },
+  "homepage": "https://github.com/Alchiment/web-rick-and-morty#readme",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "globals": "^15.11.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.10.0",
+    "vite": "^5.4.9"
+  }
+}
