@@ -4,6 +4,7 @@ import {ApolloProvider} from "@apollo/client";
 import apolloClient from "./lib/graphql/apollo-client.graphql.ts";
 import {useState} from "react";
 import {GlobalStateInterface} from "./modules/common/models/global-state.model.ts";
+import CharacterItem from "./modules/common/components/CharacterItem.tsx";
 
 function App() {
     const [globalState, setGlobalState] = useState<GlobalStateInterface>();
@@ -11,11 +12,15 @@ function App() {
     return (
         <ApolloProvider client={apolloClient}>
             <div className="flex h-screen">
-                <div className="w-64 bg-gray-200 p-4 hidden sm:block">
+                <div className="w-96 bg-gray-50 p-4 hidden sm:block">
                     <h2 className="text-xl font-bold mb-4">Sidebar</h2>
-                    <ul>
-                            {globalState?.characters.map((character) => <li key={character.id}>{character.name}</li>)}
-                    </ul>
+                    {
+                        globalState?.characters.map(
+                            (character)  => <div className="mb-1" key={character.id}>
+                                <CharacterItem character={character} />
+                            </div>
+                        )
+                    }
                 </div>
                 <div className="flex-1 p-8">
                     <Outlet context={[globalState, setGlobalState]} />

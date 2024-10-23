@@ -14,7 +14,8 @@ export default {
           'purple': '#5A3696',
           'success': '#63D838',
           'danger': '#ef4444',
-          'gray': '#6b7280',
+          'gray': '#D1D5DB',
+          'gray-2': '#6B7280',
           'info': '#78dcca',
         }
       },
