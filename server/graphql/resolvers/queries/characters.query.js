@@ -4,7 +4,7 @@ import {
 } from "../../../repositories/character.repository.js";
 import {CharacterModel} from "../../../dtos/character.model.js";
 
-export async function queryGetCharacters(_root, filter) {
+export async function queryGetCharacters(_root, {filter}) {
     const characters = await fetchQueryCharacters(filter);
     return characters?.map(
         (character) => new CharacterModel(character)
