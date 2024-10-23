@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import {Outlet} from "react-router-dom";
+import {ApolloProvider} from "@apollo/client";
+import apolloClient from "./lib/graphql/apollo-client.graphql.ts";
+import {useState} from "react";
+import {GlobalStateInterface} from "./modules/common/models/global-state.model.ts";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [globalState, setGlobalState] = useState<GlobalStateInterface>();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <ApolloProvider client={apolloClient}>
+            <div className="flex h-screen">
+                <div className="w-64 bg-gray-200 p-4 hidden sm:block">
+                    <h2 className="text-xl font-bold mb-4">Sidebar</h2>
+                    <ul>
+                            {globalState?.characters.map((character) => <li key={character.id}>{character.name}</li>)}
+                    </ul>
+                </div>
+                <div className="flex-1 p-8">
+                    <Outlet context={[globalState, setGlobalState]} />
+                </div>
+            </div>
+        </ApolloProvider>
+    );
 }
 
-export default App
+export default App;
