@@ -1,0 +1,20 @@
+.b-input {
+    background: #F3F4F6;
+}
+
+.b-input__search {
+    height: 52px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.b-input__search--icon__search {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.b-input__search--icon__settings {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
