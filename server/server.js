@@ -4,6 +4,7 @@ import {ApolloServer} from "@apollo/server";
 import {resolvers} from "./resolvers.js";
 import {expressMiddleware as apolloMiddleware} from "@apollo/server/express4";
 import {SystemVars} from "./constants/system-vars.constant.js";
+import dbConn from './utils/db/database.js';
 
 const app = express();
 
@@ -20,6 +21,8 @@ const apolloServer = new ApolloServer({typeDefs, resolvers});
 await apolloServer.start();
 
 app.use('/graphql', apolloMiddleware(apolloServer));
+
+await dbConn.openConnection();
 
 app.listen({port: SystemVars.PORT}, () => {
     console.log(`Server running on ${SystemVars.PORT}`);

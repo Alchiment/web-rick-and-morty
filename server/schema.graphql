@@ -22,12 +22,14 @@ type Character {
     name: String!
     status: String!
     species: String!
-    type: String!
+    type: String
     gender: String!
-    origin: Location!
-    location: Location!
+    origin: Location
+    location: Location
     image: String!
-    episode: [Episode!]!
+    episode: [Episode]
+    starred: Boolean
+    softDelete: Int
 }
 
 type Location {
@@ -39,13 +41,13 @@ type Episode {
 }
 
 type Query {
-    characters(page: Int, filter: CharacterFilter): [Character!]!
+    characters(filter: CharacterFilter): [Character!]!
+    starredCharacters: [Character]
 }
 
 input CharacterFilter {
     name: String
     status: CharacterFilterStatus
     species: CharacterFilterSpecie
-    type: String
     gender: CharacterFilterGender
 }

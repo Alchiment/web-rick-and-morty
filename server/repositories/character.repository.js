@@ -1,48 +1,32 @@
-import {SystemVars} from "../constants/system-vars.constant.js";
-import {GraphQLClient, gql} from "graphql-request";
-
-const client = new GraphQLClient(SystemVars.API_GQL_RICK_MORTY);
+import dbConn from "../utils/db/database.js";
 
 /**
  *
- * @param page
  * @param filter {Object}
  * @param filter.name {String}
  * @param filter.status {String} alive | dead | unknown
  * @param filter.species {String} human | alien | other
- * @param filter.type {String}
  * @param filter.gender {String} female, male, genderless, unknown
- * @returns {Promise<{characters: {results: Array}}>}
+ * @returns {Promise<Array>}
  */
-export async function fetchCharacters({page, filter}) {
-    const query = gql`
-        query ($page: Int, $filter: FilterCharacter) {
-            characters(page: $page, filter: $filter) {
-                results {
-                    id
-                    name
-                    status
-                    species
-                    type
-                    gender
-                    origin {
-                        name
-                    }
-                    location {
-                        name
-                    }
-                    image
-                    episode {
-                        name
-                    }
-                }
-            }
-        }
-    `;
-    const variables = {
-        page,
-        filter
-    };
+export async function fetchQueryCharacters(filter) {
+    const conn = await dbConn.getConnection();
+    let condition = {};
+    if (filter) {
+        Object.keys(filter).forEach(key => {
+            condition[key] = {$regex: filter[key], $options: 'i'};
+        });
+    }
+    return await conn.collection('characters').find(condition).toArray();
+}
 
-    return await client.request(query, variables);
+/**
+ *
+ * @returns {Promise<Array>}
+ */
+export async function fetchCharactersStarred() {
+    const conn = await dbConn.getConnection();
+    return await conn.collection('characters').find({
+        "starred": true
+    }).toArray();
 }

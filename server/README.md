@@ -13,6 +13,7 @@ query GetCharacter($filter: CharacterFilter) {
     type
     gender
     image
+    starred
     episode {
       name
     }
@@ -22,6 +23,7 @@ query GetCharacter($filter: CharacterFilter) {
     origin {
       name
     }
+    softDelete
   }
 }
 ```
