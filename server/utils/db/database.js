@@ -1,8 +1,8 @@
 import { MongoClient } from "mongodb";
-import {SystemVars} from "../../constants/system-vars.constant.js";
+import {systemVars} from "../../constants/system-vars.constant.js";
 
-const strConnection = SystemVars.STR_CONN_DB || '';
-const dbName = SystemVars.DB_NAME || '';
+const strConnection = systemVars.STR_CONN_DB || '';
+const dbName = systemVars.DB_NAME || '';
 const client = new MongoClient(strConnection);
 let conn;
 

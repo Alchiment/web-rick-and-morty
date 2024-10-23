@@ -1,6 +1,6 @@
 import dbConn from "./database.js";
 import axios from "axios";
-import {SystemVars} from "../../constants/system-vars.constant.js";
+import {systemVars} from "../../constants/system-vars.constant.js";
 
 /**
  * @returns {Promise<String>}
@@ -32,7 +32,7 @@ async function loadCharactersFromEndpoint(clear = false) {
     return new Promise(async (resolve, reject) => {
         try {
             const conn = await dbConn.getConnection();
-            const originCollections = await axios.get(`${SystemVars.API_RICK_MORTY}/character`);
+            const originCollections = await axios.get(`${systemVars.API_RICK_MORTY}/character`);
             const characters = originCollections.data.results;
             const collection = conn.collection('characters');
             if (clear) {
