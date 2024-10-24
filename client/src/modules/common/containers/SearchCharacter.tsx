@@ -1,7 +1,8 @@
 import '../../../styles/components/input-component.css';
-import SearchIcon from "./SearchIcon.tsx";
-import SettingsIcon from "./SettingsIcon.tsx";
-import InputStandard from "./InputStandard.tsx";
+import SearchIcon from "../components/SearchIcon.tsx";
+import SettingsIcon from "../components/SettingsIcon.tsx";
+import InputStandard from "../components/InputStandard.tsx";
+import SearchFilterOptions from "./SearchFilterOptions.tsx";
 
 export default function SearchCharacter() {
     return (
@@ -13,6 +14,9 @@ export default function SearchCharacter() {
             <button className="bg-b-transparent">
                 <SettingsIcon className="b-input__search--icon__settings text-b-purple" />
             </button>
+            <div className="absolute w-full mt-2">
+                <SearchFilterOptions />
+            </div>
         </div>
     );
 }

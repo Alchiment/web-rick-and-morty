@@ -1,16 +1,11 @@
 import {useGetCharacters} from "./hooks/character.hook.ts";
 import {useEffect} from "react";
-import {useOutletContext} from "react-router-dom";
-import {GlobalStateInterface, GlobalStateModel} from "../common/models/global-state.model.ts";
+import {GlobalStateModel} from "../common/models/global-state.model.ts";
+import {useGlobalState} from "../common/contexts/global-state.context.tsx";
 
 function CharacterPage() {
-    const [globalState, setGlobalState] = useOutletContext<GlobalStateInterface|any>();
-
-    const {
-        characters,
-        // loading,
-        // error,
-    } = useGetCharacters();
+    const { globalState, setGlobalState } = useGlobalState();
+    const { characters } = useGetCharacters();
 
     useEffect(() => {
         setGlobalState(new GlobalStateModel({

@@ -19,6 +19,9 @@ export default {
           'info': '#78dcca',
         }
       },
+      borderRadius: {
+        'default': '3rem',
+      }
     },
   },
   plugins: [
