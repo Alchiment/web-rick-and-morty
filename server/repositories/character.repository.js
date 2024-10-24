@@ -17,6 +17,9 @@ export async function fetchQueryCharacters(filter) {
             condition[key] = {$regex: filter[key], $options: 'i'};
         });
     }
+    condition['$or'] = [
+        {starred: {$exists: false}}, {starred: false}
+    ];
     return await conn.collection('characters').find(condition).toArray();
 }
 
